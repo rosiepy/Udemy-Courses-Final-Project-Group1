@@ -1,0 +1,62 @@
+{% extends "partials/base.html" %}
+{% block content %}
+
+<table class="table table-bordered table-hover table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Course ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Price</th>
+        <th scope="col">Free</th>
+        <th scope="col">Number of Subscribers</th>
+        <th scope="col">Number of Reviews</th>
+        <th scope="col">Number of Lectures</th>
+        <th scope="col">Level</th>
+        <th scope="col">Content Duration</th>
+        <th scope="col">Published Date</th>
+        <th scope="col">URL
+        <th></th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for course in courses %}
+     <tr>
+        <td>{{course.course_id}}</td>
+        <td>{{course.course_title}}</td>
+        <td> {{course.subject.subject}}</td>
+        <td> {{course.price.price}}</td>
+        <td> {{course.is_paid}}</td>
+        <td> {{course.num_subscribers}}</td>
+        <td> {{course.num_reviews}}</td>
+        <td> {{course.num_lectures}}</td>
+        <td> {{course.level.level}}</td>
+        <td> {{course.content_duration}}</td>
+        <td> {{course.published_timestamp}}</td>
+        <td> {{course.url}}</td>
+        <td>
+          <div class="btn-group">
+
+            <form action="{% url 'courses:delete_course' course.course_id %}" method="POST">
+                   {% csrf_token %}
+            <button class="btn btn-outline-danger btn-sm mb-2" type="submit">Delete</button>
+            </form>
+
+
+           <form action="{% url 'courses:update_course' course.course_id %}" method="POST">
+                {% csrf_token %}
+                    {{ form.as_p }}
+           <button type="submit" class="btn btn-sm btn-outline-secondary ml-2">Edit</button>
+          </form>
+
+          </div>
+
+
+          </td>
+     </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

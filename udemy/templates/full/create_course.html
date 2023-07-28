@@ -1,0 +1,12 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+  <div class="my-4 col-md-4">
+    <h2>Create Course</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success">Create</button>
+      <a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,114 @@
+<style>
+  .navbar .dropdown {
+    margin-right: 0; /* Adjust the margin to bring dropdowns closer */
+  }
+  .btn {
+    padding: 0.2rem 0.5rem;
+  }
+  .dropdown-menu .form-inline {
+    padding: 3px;
+  }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'index' %}">UdemyCourses</a>
+  <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'index' %}">
+      {% csrf_token %}
+      <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle btn-sm" type="button" id="priceDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Price
+      </button>
+      <div class="dropdown-menu" aria-labelledby="priceDropdown">
+        <form class="form-inline my-2 my-lg-0 p-2" method="GET" action="{% url 'index' %}">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="min_price" size="2" placeholder="Min" aria-label="Search">
+          <span class="text-black mx-2">-</span>
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="max_price" size="2" placeholder="Max">
+          <button class="btn btn-outline-success btn-sm ml-2" type="submit">Go</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Filter by Subscribers -->
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle btn-sm" type="button" id="subscribersDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Subscribers
+      </button>
+      <div class="dropdown-menu" aria-labelledby="subscribersDropdown">
+        <form class="form-inline my-2 my-lg-0 p-2" method="GET" action="{% url 'index' %}">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="min_subs" size="2" placeholder="Min" aria-label="Search">
+          <span class="text-black mx-2">-</span>
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="max_subs" size="2" placeholder="Max">
+          <button class="btn btn-outline-success btn-sm ml-2" type="submit">Go</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle btn-sm" type="button" id="durationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Duration
+      </button>
+      <div class="dropdown-menu" aria-labelledby="durationDropdown">
+        <form class="form-inline my-2 my-lg-0 p-2" method="GET" action="{% url 'index' %}">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="min_cont" size="2" placeholder="Min" aria-label="Search">
+          <span class="text-black mx-2">-</span>
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="max_cont"  size="2" placeholder="Max">
+          <button class="btn btn-outline-success btn-sm ml-2" type="submit">Go</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="btn btn-outline-primary dropdown-toggle btn-sm" type="button" id="reviewsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Reviews
+      </button>
+      <div class="dropdown-menu" aria-labelledby="reviewsDropdown">
+        <form class="form-inline my-2 my-lg-0 p-2" method="GET" action="{% url 'index' %}">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="min_rev" size="2" placeholder="Min" aria-label="Search">
+          <span class="text-black mx-2">-</span>
+          <input class="form-control mr-sm-2 btn-sm" type="text" name="max_rev"  size="2" placeholder="Max">
+          <button class="btn btn-outline-success btn-sm ml-2" type="submit">Go</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="dropdown">
+       <button class="btn btn-outline-primary dropdown-toggle btn-sm" type="button" id="lecturesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Lectures
+       </button>
+       <div class="dropdown-menu" aria-labelledby="lecturesDropdown">
+         <form class="form-inline my-2 my-lg-0 p-2" method="GET" action="{% url 'index' %}">
+           <input class="form-control mr-sm-2 btn-sm" type="text" name="min_lec" size="2" placeholder="Min" aria-label="Search">
+           <span class="text-black mx-2">-</span>
+           <input class="form-control mr-sm-2 btn-sm" type="text" name="max_lec"  size="2" placeholder="Max">
+           <button class="btn btn-outline-success btn-sm ml-2" type="submit">Go</button>
+         </form>
+       </div>
+     </div>
+    <!-- Add other filter forms similarly -->
+    <!-- Filter by Duration -->
+    <!-- Filter by Reviews -->
+    <!-- Filter by Lectures -->
+
+    <!-- Add Course button -->
+    <a href="{% url 'courses:add-course' %}">
+      <button type="button" class=""btn btn-danger"">Add Course</button>
+    </a>
+    {% if user.is_authenticated %}
+      <li><a href="{% url 'logout' %}" class= "btn btn-danger">Logout</button></a></li>
+    {% else %}
+        <li><a href="{% url 'courses:user_login' %}" class= "btn btn-danger">Login</button></a></li>
+    {% endif %}
+    
+  </div>
+</nav>
+<br>
+<br>
