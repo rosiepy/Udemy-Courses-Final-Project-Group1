@@ -20,7 +20,7 @@ class Level(models.Model):
     level = models.CharField(max_length=255, null=True)
 
     class Meta:
-        managed = True
+        managed = False
         
         db_table = 'levels'
     def __str__(self):
@@ -31,7 +31,7 @@ class Subjects(models.Model):
     subject_id = models.AutoField(primary_key=True)
     subject = models.CharField(max_length=255, null=True)
     class Meta:
-        managed = True
+        managed = False
         db_table = 'subjects'
     def __str__(self):
         return f"{self.subject }"
@@ -41,7 +41,7 @@ class Price(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places = 2)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'prices'
     def __str__ (self):
         return f"Price {self.price}  (ID :{self.price_id})"
@@ -61,7 +61,7 @@ class Udemy(models.Model):
     price = models.ForeignKey(Price, on_delete=models.SET_NULL,null=True)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'courses'
     def __str__(self):
         return f"Udemy courses{self.course_title } (ID: {self.course_id})"
