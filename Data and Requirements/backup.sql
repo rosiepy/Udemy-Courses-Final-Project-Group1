@@ -18,7 +18,7 @@
 --
 -- Table structure for table `levels`
 --
-create database report;
+CREATE DATABASE IF NOT EXISTS report;
 
 DROP TABLE IF EXISTS `levels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
