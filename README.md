@@ -10,5 +10,5 @@
 8) run python manage.py make migrations
 9) run python manage.py migrate
 10) run python manage.py runserver
-Now your model is ready to edit, delete, or update
-Make sure database name in settings.py matches database name of the tables
+(Now your model is ready to edit, delete, or update
+Make sure database name in settings.py matches database name of the tables)
