@@ -6,7 +6,7 @@
 5) run python manage.py make migrations
 6) run python manage.py migrate
 7) run python manage.py runserver
-Now you can go ahead and search but won't be able to update or delete. In order to do so change the managed flags in models to true
+(Now you can go ahead and search but won't be able to update or delete. In order to do so change the managed flags in models to true.)
 8) run python manage.py make migrations
 9) run python manage.py migrate
 10) run python manage.py runserver
