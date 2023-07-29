@@ -12,3 +12,4 @@
 10) Run python manage.py runserver
 (Now your model is ready to edit, delete, or update.
 Make sure database name in settings.py matches database name of the tables)
+Note: If you did not have tables in the database you can just run it without the flag and add the data later
